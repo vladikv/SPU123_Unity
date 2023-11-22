@@ -1,9 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Basket : MonoBehaviour
 {
+    [Header("Set Dynamically")]
+    public Text scoreGT; // a
+
+    void Start()
+    {
+        
+        GameObject scoreGO = GameObject.Find("ScoreCounter"); // b
+                                                          // Получить компонент Text этого игрового объекта
+        scoreGT = scoreGO.GetComponent<Text>(); // с
+                                                // Установить начальное число очков равным 0
+        scoreGT.text = "0";
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +39,18 @@ public class Basket : MonoBehaviour
         if (collidedWith.tag == "Apple")
         {
             Destroy(collidedWith);
+
+            int score = int.Parse(scoreGT.text);
+            // Добавить очки за пойманное яблоко
+            score += 100;
+            // Преобразовать число очков обратно в строку и вывести ее на экран
+            scoreGT.text = score.ToString();
+
+            // Запомнить высшее достижение
+            if (score > HighScore.score)
+            {
+                HighScore.score = score;
+            }
         }
     }
 }
