@@ -12,6 +12,7 @@ public class ApplePicker : MonoBehaviour
     public float basketButtomY = 120f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -39,18 +39,18 @@ public class Basket : MonoBehaviour
         if (collidedWith.tag == "Apple")
         {
             Destroy(collidedWith);
+        }
 
-            int score = int.Parse(scoreGT.text);
-            // Добавить очки за пойманное яблоко
-            score += 100;
-            // Преобразовать число очков обратно в строку и вывести ее на экран
-            scoreGT.text = score.ToString();
+        int score = int.Parse(scoreGT.text);
+        // Добавить очки за пойманное яблоко
+        score += 100;
+        // Преобразовать число очков обратно в строку и вывести ее на экран
+        scoreGT.text = score.ToString();
 
-            // Запомнить высшее достижение
-            if (score > HighScore.score)
-            {
-                HighScore.score = score;
-            }
+        // Запомнить высшее достижение
+        if (score > HighScore.score)
+        {
+            HighScore.score = score;
         }
     }
 }
